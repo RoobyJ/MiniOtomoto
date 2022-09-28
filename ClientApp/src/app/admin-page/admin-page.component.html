@@ -1,0 +1,39 @@
+<h1 id="tableLabel">Car offers</h1>
+
+<p *ngIf="!cars"><em>Loading...</em></p>
+
+<!-- Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" (click)="closeClick()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-edit-car [Car]="Car" *ngIf="activateEditCarCom">
+        </app-edit-car>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="closeClick()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" (click)="saveClick()"class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="cars">
+  <tbody>
+    <tr *ngFor="let _Car of cars">
+      <td>{{ _Car.brand }}</td>
+      <td>{{ _Car.model }}</td>
+      <td>{{ _Car.id_offer }}</td>
+      <td>{{ _Car.mileage }}</td>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="EditCar(_Car)">
+        Edit
+      </button>
+      <button type="button" class="btn btn-primary" (click)="deleteClick(_Car.id_offer)">Delete</button>
+    </tr>
+  </tbody>
+</table>

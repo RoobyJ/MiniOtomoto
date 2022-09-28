@@ -1,0 +1,19 @@
+<h1 id="tableLabel">Car offers</h1>
+
+<p *ngIf="!cars"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="cars">
+  <tbody>
+
+    <tr *ngFor="let Car of cars">
+      <a [routerLink]="['/car-details', Car.id_offer]">
+      <img src="/assets/Photos/{{Car.id_offer}}/0.jpg" alt="{{Car.id_offer}}" width="100" height="100">
+      <td>{{ Car.brand }}</td>
+      <td>{{ Car.model }}</td>
+      <td>{{ Car.id_offer }}</td>
+      <td>{{ Car.mileage }}</td>
+      </a>
+    </tr>
+
+  </tbody>
+</table>

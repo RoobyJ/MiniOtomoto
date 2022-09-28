@@ -1,0 +1,34 @@
+<p *ngIf="!cars"><em>Loading...</em></p>
+<body *ngIf="cars">
+
+  <table class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+      <tr>
+        <th>id oferty</th>
+        <th>marka</th>
+        <th>model</th>
+        <th>rok produkcji</th>
+        <th>przebieg</th>
+        <th>rodzja paliwa</th>
+        <th>moc</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Car of cars">
+        <td>{{ Car.id_offer }}</td>
+        <td>{{ Car.brand }}</td>
+        <td>{{ Car.model }}</td>
+        <td>{{ Car.prodyear }}</td>
+        <td>{{ Car.mileage }}</td>
+        <td>{{ Car.fuel }}</td>
+        <td>{{ Car.power }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="gallery" *ngFor="let Car of cars">
+    <div class="column" *ngFor="let img of image_amount">
+      <img src="/assets/Photos/{{Car.id_offer}}/{{img}}.jpg" alt="{{Car.id_offer}}" width="200" height="200">
+    </div>
+  </div>
+</body>
